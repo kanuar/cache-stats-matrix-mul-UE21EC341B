@@ -1,26 +1,61 @@
 #include<stdio.h>
-
-int** mul(int **arr1,int a,int b,int **arr2,int c,int d)
+void display_mat(int **mat,int rows,int columns)
 {
-    if(b!=c)
+    printf("[+] entering display function \n");
+    for (int i = 0; i < rows; ++i)
+    {
+        printf("[+] entering loop 1\n");
+        for (int j = 0; j < columns; ++j)
+        {
+            printf("%d, (i=%d,j=%d)\t",*((*(mat)+i*columns)+j),i,j );
+        }
+        printf("\n");
+    }
+    printf("[+] exiting display function \n");
+}
+
+int** mul(int **arr1,int arr1_rows,int arr1_columns,int **arr2,int arr2_rows,int arr2_columns)
+{
+    printf("[+] entered function \n");
+    // printf("[+] testing arrays\n");
+    // display_mat(arr1,arr1_rows,arr1_columns);
+    // printf("[+] testing complete for matrix 1\n\n");
+    // display_mat(arr2,arr2_rows,arr2_columns);
+    // printf("[+] testing complete for matrix 2\n\n");
+    if(arr1_columns!=arr2_rows)
     {
         perror("[-] Invalid dimensions");
         exit(1);
     }
-    int res_m=a,res_n=d;
-    int arr3[3][3]={0};
-    for (int m = 0; m < res_m; ++m)
+    int res_rows=arr1_rows,res_columns=arr2_columns;
+    int *k2=(int*)malloc(sizeof(int)*(res_rows*res_columns));
+    int **arr3=&k2;
+    for (int i = 0; i < res_rows; ++i)
     {
-        for (int n = 0; n < res_n; ++n)
+        // printf("\n\n");
+        // printf("[+] entered for loop 1 with i=%d \n",i);
+        for (int j = 0; j < res_columns; ++j)
         {
+            // printf("\n\n");
+            // printf("[+] entered for loop 2 with j=%d \n",j);
             int res=0;
-            for (int k = 0; k < b; ++k)
+            printf("\n");
+            for (int k = 0; k < arr1_columns; ++k)
             {
-                res+=(*((*(arr1+m))+k))*(*((*(arr2+k))+n));
+
+                printf("[+] entered for loop 3 with i=%d, j=%d, k=%d \n",i,j,k);
+                int val1=*((*(arr1)+i*arr1_columns)+k);
+                int val2=*((*(arr2)+k*arr2_columns)+j);
+                printf("val1->%d \t val2->%d\n",val1,val2 );
+                int temp=((int)(val1))*((int)(val2));
+                res+=temp;
             }
-            *(*(arr3+n)+m)=res;
+            // printf("[+] before storing result\n");
+            *(k2+i*res_columns+j)=res;
+            // printf("[+] stored result for i=%d and j=%d -> res=%d \n\n",i,j,res);
         }
     }
+    
     return arr3;
 }
 
@@ -29,14 +64,14 @@ int main(int argc, char const *argv[])
     
     int arr1[3][3]={{1,2,3},{4,5,6},{7,8,9}};
     int arr2[3][3]={{1,0,0},{0,1,0},{0,0,1}};
-    int arr3[3][3]=mul(arr1,3,3,arr2,3,3);
-    for (int i = 0; i < 3; ++i)
-    {
-        for (int j = 0; j < 3; ++j)
-        {
-            printf("%d\t",arr3[i][j] );
-        }
-        printf("\n");
-    }
+    // int arr1[2][2]={{1,2},{4,5}};
+    // int arr2[2][2]={{1,0},{0,1}};
+    int *arr3=&arr1;
+    int **arr4=&arr3;
+    int *arr5=&arr2;
+    int **arr6=&arr5;
+    int *arr7=*(mul(arr4,3,3,arr6,3,3));
+    int **arr8=&arr7;
+    display_mat(arr8,3,3);
     return 0;
 }
