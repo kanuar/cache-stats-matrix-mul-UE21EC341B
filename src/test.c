@@ -1,18 +1,5 @@
 #include <stdio.h>
 
-
-void display_mat(int **mat,int rows,int columns)
-{
-	for (int i = 0; i < rows; ++i)
-	{
-		for (int j = 0; j < columns; ++j)
-		{
-			printf("%d, (i=%d,j=%d)\t",*((*(mat)+i*columns)+j),i,j );
-		}
-		printf("\n");
-	}
-}
-
 int main(int argc, char const *argv[])
 {
 	int arr1[3][3]={{1,2,3},{4,5,6},{7,8,9}};
@@ -41,5 +28,3 @@ int main(int argc, char const *argv[])
     	printf("\n");
     }
 }
-
-

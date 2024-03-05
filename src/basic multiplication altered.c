@@ -14,7 +14,7 @@ int **mat_gen(int m,int n)
         {
             // printf("\n\n");
             // printf("[+] entered for loop 2 with j=%d \n",j);
-            int temp=rand()%1000;
+            int temp=rand()%100;
             *(res+i*m+j)=temp;
         }
     }
@@ -26,14 +26,14 @@ int **mat_gen(int m,int n)
 void display_mat(int **mat,int rows,int columns)
 {
     printf("[+] entering display function \n");
-    if(**mat==NULL)
+    if(*mat==NULL)
     {
         printf("[-] Invalid Result \n");
         return NULL;
     }
     for (int i = 0; i < rows; ++i)
     {
-        printf("[+] entering loop 1\n");
+        // printf("[+] entering loop 1\n");
         for (int j = 0; j < columns; ++j)
         {
             printf("%d, (i=%d,j=%d)\t",*((*(mat)+i*columns)+j),i,j );
@@ -62,20 +62,20 @@ int** mul(int **arr1,int arr1_rows,int arr1_columns,int **arr2,int arr2_rows,int
     for (int i = 0; i < res_rows; ++i)
     {
         // printf("\n\n");
-        printf("[+] entered for loop 1 with i=%d \n",i);
+        // printf("[+] entered for loop 1 with i=%d \n",i);
         for (int j = 0; j < res_columns; ++j)
         {
             // printf("\n\n");
             // printf("[+] entered for loop 2 with j=%d \n",j);
             int res=0;
-            printf("\n");
+            // printf("\n");
             for (int k = 0; k < arr1_columns; ++k)
             {
 
-                printf("[+] entered for loop 3 with i=%d, j=%d, k=%d \n",i,j,k);
+                // printf("[+] entered for loop 3 with i=%d, j=%d, k=%d \n",i,j,k);
                 int val1=*((*(arr1)+i*arr1_columns)+k);
                 int val2=*((*(arr2)+k*arr2_columns)+j);
-                printf("val1->%d \t val2->%d\n",val1,val2 );
+                // printf("val1->%d \t val2->%d\n",val1,val2 );
                 int temp=((int)(val1))*((int)(val2));
                 res+=temp;
             }
@@ -96,14 +96,23 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < count; ++i)
     {
         printf("[+] iteration number : %d\n",i );
-        int r1=rand()%10;
-        int r2=rand()%10;
-        int c1=r2;
-        int c2=rand()%10;
+        // int r1=rand()%8;
+        // int r2=rand()%8;
+        // int c1=r2;
+        // int c2=rand()%8;
+        int r1,r2,c1,c2;
+        r1=5;
+        r2=3;
+        c1=r2;
+        c2=r1;
         int *t1=*(mat_gen(r1,c1));
         int **t2=&t1;
+        printf("[+] displaying matrix 1 with dimensions MxN = %d x %d \n",r1,c1);
+        display_mat(t2,r1,c1);
         int *t3=*(mat_gen(r2,c2));
         int **t4=&t3;
+        printf("[+] displaying matrix 2 with dimensions MxN = %d x %d \n",r2,c2);
+        display_mat(t4,r2,c2);
         int *arr1=*(mul(t2,r1,c1,t4,r2,c2));
         int **arr2=&arr1;
         display_mat(arr2,r1,c2);
