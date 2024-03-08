@@ -30,13 +30,13 @@ int main(int argc, char const *argv[])
 
 
 	printf("[+] Calculated product \n");
-	for (int i = 0; i < N; ++i)
-	{
-		for (int j = 0; j < N; ++j)
-		{
-			printf("%d \t",matC[i][j] );
-		}
-		printf("\n");
-	}
+	// for (int i = 0; i < N; ++i)
+	// {
+	// 	for (int j = 0; j < N; ++j)
+	// 	{
+	// 		printf("%d \t",matC[i][j] );
+	// 	}
+	// 	printf("\n");
+	// }
 	return 0;
 }
