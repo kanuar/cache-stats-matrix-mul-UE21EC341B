@@ -1,7 +1,8 @@
 all:dependencies block matrix run_time run_cache
 
 dependencies:
-	apt-get install linux-tools-common linux-tools-generic
+	sudo apt-get install linux-tools-common linux-tools-generic
+	sudo sysctl kernel.perf_event_paranoid=-1
 
 block:
 	echo [+] Making block
