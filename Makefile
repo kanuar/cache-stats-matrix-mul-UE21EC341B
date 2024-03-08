@@ -6,14 +6,14 @@ dependencies:
 
 block:
 	echo [+] Making block
-	gcc -w /src/ca_proj\ block\ ijk.c -o ../test/block\ ijk
-	gcc -w /src/ca_proj\ block\ ikj.c -o ../test/block\ ikj
+	gcc -w src/ca_proj\ block\ ijk.c -o test/block\ ijk
+	gcc -w src/ca_proj\ block\ ikj.c -o test/block\ ikj
 	echo [+] Making block Complete
 
 matrix:
 	echo [+] Making matrix
-	cc -w /src/ca_proj\ matrix\ ijk.c -o ../test/matrix\ ijk
-	gcc -w /src/ca_proj\ matrix\ ikj.c -o ../test/matrix\ ikj
+	cc -w src/ca_proj\ matrix\ ijk.c -o test/matrix\ ijk
+	gcc -w src/ca_proj\ matrix\ ikj.c -o test/matrix\ ikj
 	echo [+] Making matrix Complete
 
 run_time:
