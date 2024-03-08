@@ -1,0 +1,32 @@
+raunak@raunak-rpi:~/Desktop/code/cache-stats-matrix-mul-UE21EC341B/test$ perf stat -r 5 -e branch-misses,branches,cache-misses,cache-references,cycles,instructions,cs,faults,user_time,L1-dcache-loads,L1-dcache-load-misses ./block_ikj.out
+[+] Created matrices
+[+] Initialized matrices
+[+] Calculated product
+[+] Program completed[+] Created matrices
+[+] Initialized matrices
+[+] Calculated product
+[+] Program completed[+] Created matrices
+[+] Initialized matrices
+[+] Calculated product
+[+] Program completed[+] Created matrices
+[+] Initialized matrices
+[+] Calculated product
+[+] Program completed[+] Created matrices
+[+] Initialized matrices
+[+] Calculated product
+[+] Program completed
+ Performance counter stats for './block_ikj.out' (5 runs):
+
+             18829      branch-misses                    #    1.43% of all branches             ( +- 18.68% )  (84.66%)
+           1312901      branches                                                                ( +-  1.76% )
+             10442      cache-misses                     #    0.14% of all cache refs           ( +-  4.38% )
+           7699513      cache-references                                                        ( +-  0.43% )
+           7222509      cycles                                                                  ( +-  1.09% )
+          21216088      instructions                     #    2.94  insn per cycle              ( +-  0.50% )
+                 3      cs                                                                      ( +- 62.00% )
+                59      faults                                                                  ( +-  0.83% )
+           3692796 ns   user_time                                                               ( +-  6.27% )
+           7699513      L1-dcache-loads                                                         ( +-  0.43% )
+              7681      L1-dcache-load-misses            #    0.10% of all L1-dcache accesses   ( +- 34.59% )  (15.34%)
+
+          0.004706 +- 0.000258 seconds time elapsed  ( +-  5.49% )

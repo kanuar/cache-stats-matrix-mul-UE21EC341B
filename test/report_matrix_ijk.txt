@@ -1,0 +1,27 @@
+raunak@raunak-rpi:~/Desktop/code/cache-stats-matrix-mul-UE21EC341B/test$ perf stat -r 5 -e branch-misses,branches,cache-misses,cache-references,cycles,instructions,cs,faults,user_time,L1-dcache-loads,L1-dcache-load-misses ./matrix_ijk.out
+[+] Created matrices
+[+] Initialized matrices
+[+] Program completed[+] Created matrices
+[+] Initialized matrices
+[+] Program completed[+] Created matrices
+[+] Initialized matrices
+[+] Program completed[+] Created matrices
+[+] Initialized matrices
+[+] Program completed[+] Created matrices
+[+] Initialized matrices
+[+] Program completed
+ Performance counter stats for './matrix_ijk.out' (5 runs):
+
+              9626      branch-misses                    #    0.94% of all branches             ( +- 22.17% )
+           1019607      branches                                                                ( +-  0.77% )
+              9665      cache-misses                     #    0.24% of all cache refs           ( +-  1.81% )
+           4032552      cache-references                                                        ( +-  0.28% )
+           4379244      cycles                                                                  ( +-  0.69% )
+          10174244      instructions                     #    2.32  insn per cycle              ( +-  0.35% )
+                 2      cs                                                                      ( +- 56.12% )
+                58      faults                                                                  ( +-  0.42% )
+           1411016 ns   user_time                                                               ( +- 18.91% )
+           4032552      L1-dcache-loads                                                         ( +-  0.28% )
+     <not counted>      L1-dcache-load-misses                                                   ( +- 62.94% )  (0.00%)
+
+         0.0023587 +- 0.0000248 seconds time elapsed  ( +-  1.05% )
