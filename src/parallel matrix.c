@@ -4,7 +4,7 @@
 
 #define NT 4
 #define block 4
-#define N 128
+#define N 256
 #define thrd_no omp_get_thread_num
 
 int main(int argc, char const *argv[])

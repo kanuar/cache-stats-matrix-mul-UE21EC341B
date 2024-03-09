@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #define block 4
-#define N 64
+#define N 256
 
 int main(int argc, char const *argv[])
 {
