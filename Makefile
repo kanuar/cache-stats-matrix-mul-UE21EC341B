@@ -50,7 +50,7 @@ run_cache:
 test_valgrind:
 	echo [+] Testing valgrind
 	valgrind -v --time-stamp=yes ./test/parallel
-	valgrind --tool=cachegrind --cache-sim=yes --branch-sim=yes --show-percs --I1=131072,4,512 --D1=131072,4,512 ./test/parallel
+	valgrind --tool=cachegrind --cache-sim=yes --branch-sim=yes --I1=131072,4,512 --D1=131072,4,512 ./test/parallel
 	echo [+] end of valgrind
 
 clean:
