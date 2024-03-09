@@ -1,8 +1,9 @@
-all:dependencies block matrix run_time run_cache
+all:dependencies block matrix run_time run_cache test_valgrind
 
 dependencies:
 	sudo apt-get update
 	sudo apt-get install linux-tools-common linux-tools-generic
+	sudo apt-get install valgrind
 	sudo sysctl kernel.perf_event_paranoid=-1
 
 block:
@@ -45,6 +46,11 @@ run_cache:
 	echo Cache analysis for parallel
 	perf stat -e branches,branch-misses,cache-misses,cache-references,cycles,instructions,cs,faults,user_time,L1-dcache-loads,L1-dcache-load-misses,L1-icache-loads,L1-icache-load-misses,dTLB-loads,dTLB-load-misses,iTLB-loads,iTLB-load-misses,branch-loads,branch-load-misses ./test/parallel
 	echo [+] end of Cache segment
+
+test_valgrind:
+	echo [+] Testing valgrind
+	valgrind ./test/parallel
+	echo [+] end of valgrind
 
 clean:
 	echo [+] Cleaning Directory
