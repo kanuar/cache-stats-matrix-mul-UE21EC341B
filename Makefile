@@ -21,15 +21,15 @@ matrix:
 run_time:
 	echo Timing segment 
 	echo Timing matrix ijk
-	for counter in {1..20}; do time ./test/matrix\ ijk; done
+	times 20 ./test/matrix\ ijk
 	echo Timing matrix ikj
-	for counter in {1..20}; do time ./test/matrix\ ikj; done
+	times 20 ./test/matrix\ ikj
 	echo Timing block ijk	
-	for counter in {1..20}; do time ./test/block\ ijk; done
+	times 20 ./test/block\ ijk
 	echo Timing block ikj
-	for counter in {1..20}; do time ./test/block\ ikj; done
+	times 20 ./test/block\ ikj
 	echo Parallel timing 
-	for counter in {1..20}; do time ./test/parallel; done
+	times 20 ./test/parallel
 	echo [+] end of Timing segment
 
 run_cache:
