@@ -52,19 +52,19 @@ run_time:
 run_valgrind:
 	echo [+] Testing valgrind
 	echo [+] Testing parallel
-	valgrind -v ./test/parallel
+	valgrind ./test/parallel
 	valgrind --tool=cachegrind --cachegrind-out-file=bin/parallel.txt --cache-sim=yes --branch-sim=yes --I1=131072,4,512 --D1=131072,4,512 ./test/parallel
 	echo [+] Testing matrix ijk
-	valgrind -v ./test/matrix\ ijk
+	valgrind ./test/matrix\ ijk
 	valgrind --tool=cachegrind --cachegrind-out-file=bin/matrix_ijk.txt --cache-sim=yes --branch-sim=yes --I1=131072,4,512 --D1=131072,4,512 ./test/matrix\ ijk
 	echo [+] Testing matrix ikj
-	valgrind -v ./test/matrix\ ikj
+	valgrind ./test/matrix\ ikj
 	valgrind --tool=cachegrind --cachegrind-out-file=bin/matrix_ikj.txt --cache-sim=yes --branch-sim=yes --I1=131072,4,512 --D1=131072,4,512 ./test/matrix\ ikj
 	echo [+] Testing block ijk
-	valgrind -v ./test/block\ ijk
+	valgrind ./test/block\ ijk
 	valgrind --tool=cachegrind --cachegrind-out-file=bin/block_ijk.txt --cache-sim=yes --branch-sim=yes --I1=131072,4,512 --D1=131072,4,512 ./test/block\ ijk
 	echo [+] Testing block ikj
-	valgrind -v ./test/block\ ikj
+	valgrind ./test/block\ ikj
 	valgrind --tool=cachegrind --cachegrind-out-file=bin/block_ikj.txt --cache-sim=yes --branch-sim=yes --I1=131072,4,512 --D1=131072,4,512 ./test/block\ ikj
 	echo [+] end of valgrind
 
