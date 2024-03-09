@@ -14,6 +14,7 @@ matrix:
 	echo [+] Making matrix
 	cc -w src/ca_proj\ matrix\ ijk.c -o test/matrix\ ijk
 	gcc -w src/ca_proj\ matrix\ ikj.c -o test/matrix\ ikj
+	gcc -w -fopenmp src/parallel\ matrix.c -o test/parallel
 	echo [+] Making matrix Complete
 
 run_time:
@@ -26,6 +27,8 @@ run_time:
 	for counter in {1..20}; do time ./test/block\ ijk; done
 	echo Timing block ikj
 	for counter in {1..20}; do time ./test/block\ ikj; done
+	echo Parallel timing 
+	for counter in {1..20}; do time ./test/parallel; done
 	echo [+] end of Timing segment
 
 run_cache:
@@ -38,6 +41,8 @@ run_cache:
 	perf stat -e branches,branch-misses,cache-misses,cache-references,cycles,instructions,cs,faults,user_time,L1-dcache-loads,L1-dcache-load-misses,L1-icache-loads,L1-icache-load-misses,dTLB-loads,dTLB-load-misses,iTLB-loads,iTLB-load-misses,branch-loads,branch-load-misses ./test/block\ ijk
 	echo Cache analysis for block ikj
 	perf stat -e branches,branch-misses,cache-misses,cache-references,cycles,instructions,cs,faults,user_time,L1-dcache-loads,L1-dcache-load-misses,L1-icache-loads,L1-icache-load-misses,dTLB-loads,dTLB-load-misses,iTLB-loads,iTLB-load-misses,branch-loads,branch-load-misses ./test/block\ ikj
+	echo Cache analysis for parallel
+	perf stat -e branches,branch-misses,cache-misses,cache-references,cycles,instructions,cs,faults,user_time,L1-dcache-loads,L1-dcache-load-misses,L1-icache-loads,L1-icache-load-misses,dTLB-loads,dTLB-load-misses,iTLB-loads,iTLB-load-misses,branch-loads,branch-load-misses ./test/parallel
 	echo [+] end of Cache segment
 
 clean:
