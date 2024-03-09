@@ -1,6 +1,7 @@
 all:dependencies block matrix run_time run_cache
 
 dependencies:
+	sudo apt-get update
 	sudo apt-get install linux-tools-common linux-tools-generic
 	sudo sysctl kernel.perf_event_paranoid=-1
 
